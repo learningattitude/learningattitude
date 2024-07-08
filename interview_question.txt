@@ -1,0 +1,80 @@
+Fundamental Questions
+What are the different data types in JavaScript?
+Answer: JavaScript has six primitive data types: String, Number, Boolean, Null, Undefined, and Symbol. Additionally, there is the Object type, which includes arrays, functions, and other objects.
+
+Explain the difference between == and ===.
+Answer: == is the abstract equality operator, which performs type coercion before comparing values. === is the strict equality operator, which does not perform type coercion and only returns true if both values are of the same type and value.
+
+What is the purpose of the this keyword in JavaScript?
+Answer: The this keyword refers to the context in which a function is executed. Its value depends on how the function is called. In the global context, this refers to the global object (window in browsers), and within an object method, this refers to the object the method belongs to.
+
+
+Advanced Questions
+What is a closure in JavaScript, and how is it used?
+Answer: A closure is a function that has access to its own scope, the scope of the outer function, and the global scope. It allows a function to access variables from an enclosing scope, even after the outer function has finished executing. Closures are often used to create private variables and functions.
+
+Explain the concept of prototypes in JavaScript.
+Answer: Every JavaScript object has a prototype. A prototype is also an object. All JavaScript objects inherit their properties and methods from their prototype. This is known as prototypal inheritance. The prototype property is used primarily for inheritance.
+
+What is event delegation in JavaScript?
+Answer: Event delegation is a technique where a single event listener is added to a parent element to manage events for its child elements. This is efficient because it avoids the need to add event listeners to multiple child elements individually.
+
+Practical Coding Questions
+Write a function to reverse a string in JavaScript.
+javascript | Copy code
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+console.log(reverseString("hello")); // Output: "olleh"
+
+How would you debounce a function in JavaScript?
+javascript | Copy code
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+const debouncedFunction = debounce(() => {
+  console.log('Function executed');
+}, 300);
+
+debouncedFunction();
+debouncedFunction();
+debouncedFunction(); // Only the last call will execute after 300ms
+
+Implement a function to check if a given number is a palindrome.
+javascript | Copy code
+function isPalindrome(num) {
+  const str = num.toString();
+  return str === str.split('').reverse().join('');
+}
+
+console.log(isPalindrome(121)); // Output: true
+console.log(isPalindrome(123)); // Output: false
+
+Scenario-Based Questions
+Explain the concept of promises in JavaScript. How do you handle asynchronous operations using promises?
+Answer: A promise in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises provide then and catch methods to handle the success and failure of asynchronous operations. Promises can be chained to perform a sequence of asynchronous operations in order.
+
+What is the difference between call, apply, and bind in JavaScript?
+Answer:
+call: Invokes a function with a given this value and arguments provided individually.
+apply: Invokes a function with a given this value and arguments provided as an array.
+bind: Returns a new function with a given this value and arguments permanently bound to the function.
+Example:
+javascript | Copy code
+const obj = { a: 1 };
+
+function add(b) {
+  return this.a + b;
+}
+
+console.log(add.call(obj, 2)); // Output: 3
+console.log(add.apply(obj, [2])); // Output: 3
+
+const boundAdd = add.bind(obj);
+console.log(boundAdd(2)); // Output: 3
+
